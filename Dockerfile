@@ -6,5 +6,5 @@ COPY pyproject.toml uv.lock README.md ./
 RUN uv sync --frozen --no-cache --no-install-project
 
 COPY gsc_server.py .
-CMD ["uv", "run", "python", "gsc_server.py"]
+CMD ["uv", "run", "--no-sync", "python", "gsc_server.py"]
 
