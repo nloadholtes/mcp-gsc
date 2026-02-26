@@ -421,13 +421,13 @@ async def get_sitemaps(site_url: str) -> str:
                 except:
                     pass
             
+            # Get counts (API returns these as strings)
+            warnings = int(sitemap.get("warnings", 0))
+            errors = int(sitemap.get("errors", 0))
+
             status = "Valid"
-            if "errors" in sitemap and sitemap["errors"] > 0:
+            if errors > 0:
                 status = "Has errors"
-            
-            # Get counts
-            warnings = sitemap.get("warnings", 0)
-            errors = sitemap.get("errors", 0)
             
             # Get contents if available
             indexed_urls = "N/A"
